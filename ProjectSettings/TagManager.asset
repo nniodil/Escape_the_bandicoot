@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Ground
   - Pizza
+  - Apple
+  - DeathBarrier
+  - Next Level
   layers:
   - Default
   - TransparentFX

@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class PizzaScript : MonoBehaviour
 {
-    private float rotationSpeed = 300;
-    
+    public float rotationSpeed;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +14,7 @@ public class PizzaScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
         transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime);
     }
 }
