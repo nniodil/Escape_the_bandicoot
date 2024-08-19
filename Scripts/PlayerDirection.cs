@@ -7,7 +7,8 @@ public class PlayerDirection : MonoBehaviour
     public PlayerController playerController;
     public GameManager gameManager;
     public Animator animator;
-    // Start is called before the first frame update
+   
+    
     void Start()
     {
         playerController = FindAnyObjectByType<PlayerController>();
@@ -15,13 +16,10 @@ public class PlayerDirection : MonoBehaviour
         gameManager = FindAnyObjectByType<GameManager>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         PlayerAnimation();
     }
-    
-    
     
     
     private void PlayerAnimation()
@@ -39,11 +37,8 @@ public class PlayerDirection : MonoBehaviour
             animator.SetFloat("Speed_f", 0);
         }
 
-
-
         if (Input.GetKey(KeyCode.S) && gameManager.gameOver.activeInHierarchy == false)
         {
-
             animator.SetBool("Static_b", true);
             animator.SetFloat("Speed_f", 0.6f);
             transform.rotation = Quaternion.Euler(transform.rotation.x, 180, transform.rotation.z);
@@ -53,8 +48,6 @@ public class PlayerDirection : MonoBehaviour
             animator.SetBool("Static_b", false);
             animator.SetFloat("Speed_f", 0);
         }
-
-
 
         if (Input.GetKey(KeyCode.A) && gameManager.gameOver.activeInHierarchy == false)
         {
@@ -68,7 +61,6 @@ public class PlayerDirection : MonoBehaviour
             animator.SetFloat("Speed_f", 0);
         }
 
-
         if (Input.GetKey(KeyCode.D) && gameManager.gameOver.activeInHierarchy == false)
         {
             animator.SetBool("Static_b", true);
@@ -81,8 +73,5 @@ public class PlayerDirection : MonoBehaviour
             animator.SetBool("Static_b", false);
             animator.SetFloat("Speed_f", 0);
         }
- 
     }
 }
-
-
