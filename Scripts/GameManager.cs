@@ -22,21 +22,17 @@ public class GameManager : MonoBehaviour
     
     public BoxCollider endGameBarrier;
     public BoxCollider endGameBarrier2;
-    
-    
-    // Start is called before the first frame update
+
+   
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         gameOver.SetActive(false);
         currentScene = SceneManager.GetActiveScene().name;
-
-
-
     }
 
-    // Update is called once per frame
+   
     void Update()
     {
         livesText.text = lives.ToString();
@@ -50,7 +46,6 @@ public class GameManager : MonoBehaviour
         {
             endGameBarrier2.enabled = false;
         }
-    
     }
 
     public void RestartButton()
@@ -68,9 +63,9 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene("Level 2");
         }
-
     }
-     public void QuitButton()
+    
+    public void QuitButton()
     {
         Application.Quit();
         Debug.Log("quit");
