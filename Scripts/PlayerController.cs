@@ -29,12 +29,7 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem deathParticle;
 
     private PlayerDirection playerAnimator;
-    
-
-
-
-
-    // Start is called before the first frame update
+ 
     void Start()
     {
         transform.position = gameManager.respawnPosition.transform.position;
@@ -46,28 +41,22 @@ public class PlayerController : MonoBehaviour
         playerAnimator = FindAnyObjectByType<PlayerDirection>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         JumpPlayer();
     }
-
 
     void FixedUpdate()
     {
         MovePlayer();
     }
 
-
-
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
             isOnGround = true;
-
         }
-
     }
 
     void MovePlayer()
@@ -79,8 +68,6 @@ public class PlayerController : MonoBehaviour
             transform.Translate(Vector3.forward * Time.deltaTime * speed * verticalInput);
             transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalInput);
         }
-
-
     }
 
     void JumpPlayer()
@@ -91,8 +78,6 @@ public class PlayerController : MonoBehaviour
             playerRb.AddForce(Vector3.up * doubleJumpForce, ForceMode.Impulse);
             doubleJump = false;
         }
-
-
 
         if (Input.GetKeyDown(KeyCode.Space) && isOnGround && gameManager.gameOver.activeInHierarchy == false)
         {
@@ -132,19 +117,18 @@ public class PlayerController : MonoBehaviour
             isOnGround = false;
             playerCollider.enabled = false;
             playerRb.isKinematic = true;
-
         }
+        
         if (other.CompareTag("DeathBarrier") && gameManager.lives > 0)
         {
             gameManager.lives--;
         }
-    }
+  }
 
     void Collectables(Collider other)
     {
         if (other.CompareTag("Pizza"))
         {
-
             gameManager.score += 1;
             pizzaSound.Play();
             Destroy(other.gameObject);
@@ -152,7 +136,6 @@ public class PlayerController : MonoBehaviour
 
         if (other.CompareTag("Apple"))
         {
-
             gameManager.lives += 1;
             appleSound.Play();
             Destroy(other.gameObject);
@@ -172,7 +155,6 @@ public class PlayerController : MonoBehaviour
                 gameManager.missingPizza.gameObject.SetActive(true);
             }
 
-            
             if (gameManager.currentScene == "Level 2" && gameManager.score >= gameManager.totalpizza)
             {
                 SceneManager.LoadScene("Level 3");
@@ -189,15 +171,11 @@ public class PlayerController : MonoBehaviour
                 gameManager.endGame.SetActive(true);
                 gameManager.missingPizza.gameObject.SetActive(false);
                 gameManager.endGameBarrier.enabled = true;
-                
             }
             else if (gameManager.currentScene == "Level 3" && gameManager.score < gameManager.totalpizza)
             {
                 gameManager.missingPizza.gameObject.SetActive(true);
             }
-
-
         }
     }
-
 }
